@@ -4,6 +4,7 @@ import android.os.Bundle;
 import android.support.design.widget.FloatingActionButton;
 import android.support.design.widget.Snackbar;
 import android.support.design.widget.TabLayout;
+import android.support.v4.app.Fragment;
 import android.support.v4.view.ViewPager;
 import android.view.View;
 import android.support.design.widget.NavigationView;
@@ -16,6 +17,13 @@ import android.view.Menu;
 import android.view.MenuItem;
 
 import com.example.logonpf.shiftcarros.adapter.TabAdapter;
+import com.example.logonpf.shiftcarros.fragments.PokemonFragment;
+import com.example.logonpf.shiftcarros.fragments.StarWarsFragment;
+
+import java.util.ArrayList;
+import java.util.HashMap;
+import java.util.List;
+import java.util.Map;
 
 public class MainActivity extends AppCompatActivity
         implements NavigationView.OnNavigationItemSelectedListener {
@@ -94,12 +102,20 @@ public class MainActivity extends AppCompatActivity
     }
 
     private void initTabLayout() {
+
+        List<Fragment> fragments = new ArrayList<>();
+
+        fragments.add(new PokemonFragment());
+        fragments.add(new StarWarsFragment());
+
         TabLayout tabLayout = (TabLayout)findViewById(R.id.tab);
+
         tabLayout.addTab(tabLayout.newTab().setText("Pokemons"));
         tabLayout.addTab(tabLayout.newTab().setText("Star Wars"));
 
         final ViewPager viewPager = (ViewPager) findViewById(R.id.viewPager);
-        TabAdapter tabAdapter = new TabAdapter(getSupportFragmentManager());
+
+        TabAdapter tabAdapter = new TabAdapter(getSupportFragmentManager(), fragments);
 
         viewPager.setAdapter(tabAdapter);
 
