@@ -10,11 +10,12 @@ import android.widget.TextView;
 
 import com.example.logonpf.shiftcarros.R;
 import com.example.logonpf.shiftcarros.model.Pokemon;
+import com.squareup.picasso.Picasso;
 
 import java.util.List;
 
 public class PokemonAdapter
-        extends RecyclerView.Adapter<PokemonAdapter.PokemonViewHolder>{
+        extends RecyclerView.Adapter<PokemonAdapter.PokemonViewHolder> {
 
     private Context context;
     private List<Pokemon> pokemons;
@@ -33,12 +34,19 @@ public class PokemonAdapter
 
     @Override
     public void onBindViewHolder(PokemonViewHolder holder, int position) {
-
+        Pokemon pokemon = pokemons.get(position);
+        holder.tvNomePokemon.setText(pokemon.getNome());
+        Picasso.with(context)
+                .load("https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/"
+                        + (position + 1) + ".png")
+                .error(R.drawable.erro)
+                .placeholder(R.drawable.placeholder)
+                .into(holder.ivPokemon);
     }
 
     @Override
     public int getItemCount() {
-        return 0;
+        return pokemons.size();
     }
 
     public class PokemonViewHolder extends RecyclerView.ViewHolder {
