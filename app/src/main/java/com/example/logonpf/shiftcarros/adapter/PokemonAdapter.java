@@ -21,6 +21,7 @@ public class PokemonAdapter
     private List<Pokemon> pokemons;
 
     public PokemonAdapter(Context context, List<Pokemon> pokemons) {
+        super();
         this.context = context;
         this.pokemons = pokemons;
     }
