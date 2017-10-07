@@ -1,7 +1,10 @@
 package com.example.logonpf.shiftcarros.model;
 
+import com.google.gson.annotations.SerializedName;
+
 public class Pokemon {
 
+    @SerializedName(value = "name")
     private String nome;
 
     public String getNome() {

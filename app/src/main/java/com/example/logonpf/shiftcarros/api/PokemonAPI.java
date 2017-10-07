@@ -1,6 +1,7 @@
 package com.example.logonpf.shiftcarros.api;
 
 import com.example.logonpf.shiftcarros.model.Pokemon;
+import com.example.logonpf.shiftcarros.model.PokemonResponse;
 
 import java.util.List;
 
@@ -14,6 +15,6 @@ import retrofit2.http.GET;
 public interface PokemonAPI {
 
     @GET("api/v2/pokemon")
-    Call<List<Pokemon>> getPokemons();
+    Call<PokemonResponse> getPokemons();
 
 }
